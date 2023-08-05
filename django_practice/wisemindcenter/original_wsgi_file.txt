@@ -1,0 +1,5 @@
+-------Notes on installing Django on pythonanywhere.org--------
+
+- setting up a virtual env for the django install, a virtualenv is a sort of seperate area where you can have a standalone version of python and packages etc without relying on one system config for python
+
+- https://help.pythonanywhere.com/pages/VirtualEnvForNewerDjango
