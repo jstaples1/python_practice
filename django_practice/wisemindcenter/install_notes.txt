@@ -1,5 +1,101 @@
+------the app functionality trying to duplicate------
+
+www.keltyskey.com
+
 -------Notes on installing Django on pythonanywhere.org--------
 
 - setting up a virtual env for the django install, a virtualenv is a sort of seperate area where you can have a standalone version of python and packages etc without relying on one system config for python
 
 - https://help.pythonanywhere.com/pages/VirtualEnvForNewerDjango
+
+pull commmand -> git pull https://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@github.com/jstaples1/wisemindcenter.git
+
+push command 
+
+git push https://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@github.com/jstaples1/wisemindcenter.git
+
+
+
+------------solving ssh key problems for using git------------
+
+-https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys
+
+-https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+- to generate a new ssh key to use from the machine where you are doing checkouts
+    ssh-keygen -t ed25519 -C "jasonwstaples@gmail.com"
+
+
+------------solving the problem of not being able to use the djangorestframework include-----
+
+->basically when you install python modules make sure you install them in the same python virtual environment that you are gonna use them in.  
+if you install them in a global context on the machine itself then they won't be available when your app is running in the virtual python environment
+
+
+
+-----------how to use requirements.txt to manage the version of python modules used in the project-----
+
+https://learnpython.com/blog/python-requirements-file/
+
+
+
+------------folder organization for the wisemindcenter app------
+
+-the main controlling folder for the django project is /wisemindcenter, this is where the main urls.py associated with the jstaples1 domain name is
+- the folder that contains the rest api will be /api
+- the folder that contains the front end interface will be /app
+
+
+----to get mysql access to the db on pythonanywhere
+    -go to the databases panel and use the link to open a session to the mysql db
+    -https://help.pythonanywhere.com/pages/UsingMySQL/
+
+----to set up the django admin interface   
+    - to run the database migrations -> http://jstaples1.pythonanywhere.com/app/
+    - to create the django admin interface login -> python manage.py createsuperuser
+
+
+
+-----------------MYSQL problems on my local ubuntu laptop---------------------
+--------my mac laptop could not install the same version of mysqlclient python module as the server 
+    - had to use the
+
+-------could not login to the mysql server as root, had to give the root user a password
+    -> I had to follow some instructions on how to modify the mysql server root user provided here
+    ( https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04 )
+    , then i was able to have django use the root user for its db connection
+    
+    - used the following commands to do so:
+        -> sudo mysql
+        -> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+        -> exit
+        -> mysql -u root -p
+        -> (don't do this or for some reason django can't connect with the root info, but by doing you can use sudo mysql ) ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
+
+
+-------------If I choose to use GraphQL instead of REST for wisemindcenter-------------
+- https://www.honeybadger.io/blog/django-graphql/
+
+-------fixing static files problem on pythonanywhere-------
+- https://help.pythonanywhere.com/pages/DjangoStaticFiles
+
+
+
+---------
+
+
+--------ei stuff-------------
+
+1800-206-7218 , have sin number but won't - 66 is access code
+
+complete the report that comes in the mail, ask them where my form in the mail
+
+
+
+
+
+
+
+
+
+
