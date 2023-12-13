@@ -1,0 +1,10 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+vwisemind/
+.env
+settings_local.py
+db.sqlite3
+**/.DS_Store
+.DS_Store
