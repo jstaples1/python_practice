@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/htmx.org@1.9.9"></script>
+
+    <script>
+      function getFreeCourts() {
+        console.log("getFreeCourts called");
+
+        //const dateField = document.getElementById("date");
+        // if (dateField.value == "") {
+        //   alert("Please pick a date");
+        // } else {
+        const requestDiv = document.getElementById("court2");
+        //console.log(dateField.value);
+        console.log(requestDiv.innerHTML)
+          
+        //?date=2023-12-21
+        //   requestDiv.setAttribute(
+        //     "hx-get",
+        //     "https://8yd2rzzcbd.execute-api.us-east-2.amazonaws.com/?date=${dateField.value}"
+        //   );
+
+            requestDiv.addEventListener('click', () => {
+
+                requestDiv.setAttribute('hx-get', 'https://8yd2rzzcbd.execute-api.us-east-2.amazonaws.com/');
+                // Trigger hx-get 
+                
+               
+                //htmx.getElementById.
+            });
+
+            //#htmx.trigger("#tab2", "myEvent", {answer:42});
+
+            htmx.trigger(requestDiv, 'click');
+            //htmx.trigger('#court2', 'htmx:trigger')
+        //}
+        
+      }
+    </script>
+
+    <script>
+      function handleClick() {
+        console.log("handleClick called");
+        const button = document.getElementById("myButton");
+        button.innerText = "Searching UBC courts....Please be patient";
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <div id="court1" >
+      court 1 div
+    </div>
+
+    <div 
+        id="court2"
+        hx-get="https://8yd2rzzcbd.execute-api.us-east-2.amazonaws.com/"
+        hx-trigger="click"
+        hx-on="click: console.log('court 2 clicked')"
+        hx-swap="outerHTML"
+    >
+    court 2 div
+    </div>
+
+    <div 
+            hx-trigger="click" 
+            hx-trigger-broadcast
+            hx-on="click: getFreeCourts()">
+            Click Me
+    </div>
+
+
+    <!-- <form>
+      Date:<input type="date" id="date" />
+      <button hx-trigger="click" hx-on="click: getFreeCourts()">
+        Check Free Courts
+      </button>
+    </form> -->
+
+    <!-- <button id="myButton"
+        hx-get = "https://8yd2rzzcbd.execute-api.us-east-2.amazonaws.com/?date=2023-12-21"
+        hx-trigger="click"
+        hx-on="click: handleClick()"
+        hx-swap="outerHTML"
+    >
+        get court dates
+    </button> -->
+
+    <!-- <div
+      hx-get="https://8yd2rzzcbd.execute-api.us-east-2.amazonaws.com/"
+      hx-trigger="load"
+      hx-params='date=2023-12-21&courtNumber=1'
+      hx-swap="outerHTML"
+    ></div> -->
+    <!-- "date": location.searchParams.get("date"),"courtNumber": "1"  -->
+    <hr>
+
+    
+    <!-- <div>    
+        <div 
+            hx-trigger="click" 
+            hx-trigger-broadcast
+            hx-on="click: console.log('click me clicked')">
+            Click Me
+    </div>
+-->
+
+    
+
+    <!-- </div>     -->
+  </body>
+</html>
