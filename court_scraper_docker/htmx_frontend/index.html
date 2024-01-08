@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/htmx.org@1.9.9"></script>
+
+    <script>
+      function getFreeCourts() {
+        
+        const dateField = document.getElementById("date");
+
+        console.log(htmx.version) 
+
+        if (dateField.value == "") {
+          alert("Please pick a date");
+        } else {
+
+          //const courtNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '10', '11', '12', '13'];
+          //const courtNumbers = ['1', '2', '3', '4', '5', '6', '7', '8'];
+          const courtNumbers = ['1'];
+
+          courtNumbers.forEach(courtNumber => {
+
+            console.log(courtNumber);
+
+            const requestDiv = document.getElementById("court" + courtNumber);
+            //console.log(requestDiv.innerHTML)
+            //requestDiv.innerHTML = "Loading..."
+            
+
+            
+            //live amazon ec2 container
+            let hx_get_value =
+              "http://ec2-3-12-196-194.us-east-2.compute.amazonaws.com/app/court/?courtNumber="+courtNumber+"&date=" + dateField.value;
+            
+            //local server url for testing
+            //  let hx_get_value =
+            //  "http://localhost/app/court/?date="+dateField.value+"&courtNumber="+courtNumber
+
+
+            requestDiv.setAttribute("hx-get", hx_get_value);
+            htmx.process(requestDiv);
+            console.log(requestDiv.getAttribute("hx-get"));
+            htmx.trigger(requestDiv, "click");
+          
+          });
+        }
+      }
+
+    </script>
+
+    <script>
+      function handleClick() {
+        console.log("handleClick called");
+        const button = document.getElementById("myButton");
+        button.innerText = "Searching UBC courts....Please be patient";
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <h1>Welcome to the UBC Court Scraper!</h1>  
+    <h2>Because you don't care what court it is you care that it's available!</h2>
+    
+    <h3>
+    <form>
+
+      Date:<input type="date" id="date" />
+
+      <button hx-trigger="click" hx-on="click: getFreeCourts()">
+        Check Free Courts
+      </button>
+
+    </form>
+
+    
+    <hr />
+
+    <div
+      id="court1"
+      hx-get=""
+      hx-trigger="click"
+      hx-on="click: console.log('Checking Court 1 Availability')"
+      hx-swap="innerHTML"
+    >
+      <span class="htmx-indicator">Loading Court 1 Availability...
+    </div>
+
+    <hr />
+
+    <div
+      id="court2"
+      hx-get=""
+      hx-trigger="click"
+      hx-on="click: console.log('Checking Court 2 Availability')"
+      hx-swap="innerHTML"
+    >
+      <span class="htmx-indicator">Loading Court 2 Availability...
+    </div>
+
+    <hr />
+
+    <div
+      id="court3"
+      hx-get=""
+      hx-trigger="click"
+      hx-on="click: console.log('Checking Court 3 Availability')"
+      hx-swap="innerHTML"
+    >
+      <span class="htmx-indicator">Loading Court 3 Availability...
+    </div>
+
+    <hr />
+
+    <div
+      id="court4"
+      hx-get=""
+      hx-trigger="click"
+      hx-on="click: console.log('Checking Court 4 Availability')"
+      hx-swap="innerHTML"
+    >
+      <span class="htmx-indicator">Loading Court 4 Availability...
+    </div>
+
+    <hr />
+
+    <div
+      id="court5"
+      hx-get=""
+      hx-trigger="click"
+      hx-on="click: console.log('Checking Court 5 Availability')"
+      hx-swap="innerHTML"
+    >
+      <span class="htmx-indicator">Loading Court 5 Availability...
+    </div>
+
+    <hr />
+
+    <div
+      id="court6"
+      hx-get=""
+      hx-trigger="click"
+      hx-on="click: console.log('Checking Court 6 Availability')"
+      hx-swap="innerHTML"
+    >
+      <span class="htmx-indicator">Loading Court 6 Availability...
+    </div>
+
+    <hr />
+
+    <div
+      id="court7"
+      hx-get=""
+      hx-trigger="click"
+      hx-on="click: console.log('Checking Court 7 Availability')"
+      hx-swap="innerHTML"
+    >
+      <span class="htmx-indicator">Loading Court 7 Availability...
+    </div>
+
+    <hr />
+
+    <div
+      id="court8"
+      hx-get=""
+      hx-trigger="click"
+      hx-on="click: console.log('Checking Court 8 Availability')"
+      hx-swap="innerHTML"
+    >
+      <span class="htmx-indicator">Loading Court 8 Availability...
+    </div>
+
+    <hr />
+
+    <div
+      id="court10"
+      hx-get=""
+      hx-trigger="click"
+      hx-on="click: console.log('Checking Court 10 Availability')"
+      hx-swap="innerHTML"
+    >
+      <span class="htmx-indicator">Loading Court 10 Availability...
+    </div>
+
+    <hr />
+
+    <div
+      id="court11"
+      hx-get=""
+      hx-trigger="click"
+      hx-on="click: console.log('Checking Court 11 Availability')"
+      hx-swap="innerHTML"
+    >
+      <span class="htmx-indicator">Loading Court 11 Availability...
+    </div>
+
+    <hr />
+
+    <div
+      id="court12"
+      hx-get=""
+      hx-trigger="click"
+      hx-on="click: console.log('Checking Court 12 Availability')"
+      hx-swap="innerHTML"
+    >
+      <span class="htmx-indicator">Loading Court 12 Availability...
+    </div>
+
+    <hr />
+
+    <div
+      id="court13"
+      hx-get=""
+      hx-trigger="click"
+      hx-on="click: console.log('Checking Court 13 Availability')"
+      hx-swap="innerHTML"
+    >
+      <span class="htmx-indicator">Loading Court 13 Availability...
+    </div>
+
+
+    
+  </h3>
+    
+  </body>
+</html>
