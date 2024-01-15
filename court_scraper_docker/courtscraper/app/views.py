@@ -10,13 +10,14 @@ from django.shortcuts import render
 def court_view(request):
   
   date = request.GET.get('date')
-  courtNumber = request.GET.get('courtNumber')
+  #courtNumber = request.GET.get('courtNumber')
 
   
   context = {
         "title" : "Court",
-        #"body" : mark_safe(functions.getResponseBody(date,courtNumber)) 
         "body" : mark_safe(functions.getResponseBodies(date)) 
+
+       
   
   }
   

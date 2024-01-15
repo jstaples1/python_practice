@@ -1,15 +1,14 @@
 import sys
-#sys.path.append('/home/jason/CODE/python/git_repos/python_practice/court_scraper_docker/lib')
-sys.path.append('/home/jason/CODE/python/git_repos/python_practice/court_scraper_docker/courtscraper/app/')
-sys.path.append('/app/courtscraper/app')
-                 
+sys.path.append('/home/jason/CODE/python/git_repos/python_practice/court_scraper_docker/lib')
+#sys.path.append('./lib')
+sys.path.append('/app/lib')
+
 
 import json
-import time
 
 from bs4 import BeautifulSoup
-import functions
-import psutil
+from courtscraper_funcs import functions
+
 
 
 def lambda_handler(event, context):
@@ -38,20 +37,13 @@ def lambda_handler(event, context):
 
 
 
+
+
+
 #######Code to Test lambda function locally#######
-
-functions.killXvfbDisplays()
 event = {}
-query_params = {'date': '2024-01-05','courtNumber': '2'}
+query_params = {'date': '2023-12-21','courtNumber': '2'}
 event['queryStringParameters'] = query_params
-#lambda_handler(event, None)    
-print(functions.getResponseBodies(event['queryStringParameters']['date']))
-#functions.getResponseBodies(event['queryStringParameters']['date'])    
-
-
-
-if (functions.processRunning("Xvfb")):
-    print("Xvfb is running")
-else:
-    print("Xvfb is not running")
+print(lambda_handler(event, None))    
+#print(lambda_handler(None, None))    
 
